@@ -35,18 +35,6 @@ resource "azuread_application_password" "example" {
   depends_on = [time_rotating.example]
 }
 
-output "subscription_id" {
-  description = "Subcription_ID"
-  value       = data.azurerm_subscription.current.subscription_id
-}
-output "application_id" {
-  description = "Client Secret"
-  value       = azuread_application.example.client_id #azuread_application.example.id
-}
-output "client_secret" {
-  description = "Client Secret"
-  value       = nonsensitive(azuread_application_password.example.value)
-}
 
 #### NEWRELIC CONFIG ####
 resource "newrelic_cloud_azure_link_account" "foo"{
